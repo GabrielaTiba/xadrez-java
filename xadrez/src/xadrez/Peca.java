@@ -1,32 +1,28 @@
 package xadrez;
 
 public abstract class Peca {
-    protected String cor;
-    protected boolean capturada;
     
-    public Peca(String cor, boolean capturada){
+    protected String cor; //brancas => letra maiúscula, pretas => letra minúscula
+    protected boolean estado; //true => em jogo, false => capturada
+    
+    public Peca(String cor) {
         this.cor = cor;
-        this.capturada = capturada;
+        estado = true;
     }
     
-    // método abstrato para desenhar a peça na tela:
-    public abstract String desenho();
     
-    // método abstrato para verificar se o movimento é valido;
     public abstract boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD);
+    public abstract String desenha();
+    public abstract String caminho(int linhaO, char colunaO, int linhaD, char colunaD);
+    public abstract String tipo();
     
-    // método abstrato para fornecer o caminho que a peça vai percorrer 
-    public abstract String caminho(int linhaO, char ColunaO, int linhaD, char ColunaD);
-    
-    public String getCor(){
+    public String getCor() {
         return cor;
     }
     
-    public boolean isCapturada(){
-        return this.capturada;
-    }
+    public void capturar() {
+        estado = false;
+    } //a cor não vai mudar mas o estado sim, então ta aí
     
-    public void setCapturada(boolean capturada){
-        this.capturada = capturada;
-    }
+    
 }
