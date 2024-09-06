@@ -2,13 +2,13 @@ package xadrez;
 
 public class Bispo extends Peca {
     
-    public Bispo (String cor, boolean estado) {
-        super(cor, estado);
+    public Bispo(String cor) {
+        super(cor);
     }
     
     @Override 
     public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
-        if (capturada) {
+        if (estado) {
             
             int dLinha = Math.abs(linhaO - linhaD);
             int dColuna = Math.abs(colunaO - colunaD);
@@ -49,8 +49,19 @@ public class Bispo extends Peca {
     }
     
     @Override
+    public String desenha() {
+        if (cor.equals("Branco")) return "B";
+        return "b";
+    }
+    
+    /*     @Override
     public String desenho() {
        return this.cor.equals("branco") ? "♗" : "♝";
+    } */
+    
+    @Override
+    public String tipo() {
+        return "Bispo";
     }
     
 }
