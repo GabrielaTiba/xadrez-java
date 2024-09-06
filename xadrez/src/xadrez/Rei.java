@@ -2,13 +2,13 @@ package xadrez;
 
 public class Rei extends Peca {
     
-    public Rei(String cor, boolean estado) {
-        super(cor, estado);
+    public Rei(String cor) {
+        super(cor);
     }
     
     @Override 
     public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
-        if (capturada) { //se a peça ainda está no jogo
+        if (estado) { //se a peça ainda está no jogo
             
             int dLinha = Math.abs(linhaO - linhaD);
             int dColuna = Math.abs(colunaO - colunaD); //aparentemente, Math.abs deixa as contas em valor absoluto
@@ -31,7 +31,18 @@ public class Rei extends Peca {
     }
     
     @Override 
+    public String desenha() {
+        if (cor.equals("Branco")) return "R"; //se a cor for branca, retorna maiúsculo
+        return "r"; //se não, minúsculo
+    }
+    
+    /*@Override 
     public String desenho() {
         return this.cor.equals("branco") ? "♔" : "♚";
+    }*/
+    
+    @Override
+    public String tipo() {
+        return "Rei";
     }
 }
