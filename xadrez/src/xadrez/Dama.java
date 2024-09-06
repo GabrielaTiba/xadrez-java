@@ -1,4 +1,4 @@
-package projeto;
+package xadrez;
 
 public class Dama extends Peca {
     
