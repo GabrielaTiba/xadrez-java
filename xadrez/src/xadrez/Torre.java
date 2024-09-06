@@ -2,13 +2,13 @@ package xadrez;
 
 public class Torre extends Peca {
     
-    public Torre(String cor, boolean estado) {
-        super(cor, estado);
+    public Torre(String cor) {
+        super(cor);
     }
     
     @Override
     public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
-        if(capturada) { 
+        if(estado) { 
             
             if(linhaO == linhaD || colunaO == colunaD) return true;
             //se a linha ou coluna de destino for igual a de origem, então ele esta se movendo em linha reta
@@ -45,8 +45,19 @@ public class Torre extends Peca {
     }
     
     @Override
+    public String desenha() {
+        if (cor.equals("Branco")) return "T";
+        return "t";
+    }
+    
+    /*    @Override
     public String desenho() {
         return this.cor.equals("branco") ? "♖" : "♜";
+    }*/
+    
+    @Override 
+    public String tipo() {
+        return  "Torre";
     }
     
 }
