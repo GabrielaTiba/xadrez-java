@@ -1,14 +1,14 @@
-package xadrez;
+package projeto;
 
 public class Dama extends Peca {
     
-    public Dama(String cor, boolean estado) {
-        super(cor, estado);
+    public Dama(String cor) {
+        super(cor);
     }
     
     @Override 
     public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
-        if(capturada) {
+        if(estado) {
             
             int dLinha = Math.abs(linhaO - linhaD);
             int dColuna = Math.abs(colunaO - colunaD);
@@ -56,8 +56,19 @@ public class Dama extends Peca {
     }
     
     @Override 
+    public String desenha() {
+        if (cor.equals("Branco")) return "D";
+        return "d";
+    }
+    
+    /*    @Override 
     public String desenho() {
         return this.cor.equals("branco") ? "♕" : "♛";
+    } */
+    
+    @Override
+    public String tipo() {
+        return "Dama";
     }
 
     
