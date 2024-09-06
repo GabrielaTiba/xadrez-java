@@ -1,28 +1,26 @@
 package xadrez;
 
-/**
- *
- * @author bianca
- */
 public class Cavalo extends Peca {
-
-    public Cavalo(String cor, boolean estado) {
-        super(cor, estado);
+    
+    public Cavalo(String cor) {
+        super(cor);
     }
-
-    @Override
-    public String desenho() {
-        return this.cor.equals("branco") ? "♘" : "♞";
-    }
-
+    
     @Override
     public boolean movimentoValido(int linhaO, char colunaO, int linhaD, char colunaD) {
-        int linha = Math.abs(linhaD-linhaO);
-        int coluna = Math.abs(colunaD-colunaO);
+        if(estado) {
+            
+            int dLinha = Math.abs(linhaO - linhaD);
+            int dColuna = Math.abs(colunaO - colunaD);
+            
+            if (dLinha == 2 && dColuna == 1 || dLinha == 1 && dColuna == 2) return true;
+            return false;
+        } //cavalo se move em L, então obrigatoriamente ele vai se mover 2 casas em uma direção e mais 1 na outra
         
-        return(linha == 2 && coluna == 1) || (linha == 1 && coluna == 2);
+        return false;
+        
     }
-
+    
     @Override
     public String caminho(int linhaO, char colunaO, int linhaD, char colunaD) {
         if(movimentoValido(linhaO, colunaO, linhaD, colunaD)) { //esse foi desgraçado hein
@@ -69,4 +67,20 @@ public class Cavalo extends Peca {
         return "";
     }
     
+    @Override 
+    public String desenha() {
+        if (cor.equals("Branco")) return "C";
+        else return "c";
+    }
+    
+    /*@Override
+    public String desenho() {
+        return this.cor.equals("branco") ? "♘" : "♞";
+    }*/
+    
+    @Override
+    public String tipo() {
+        return "Cavalo";
+    }
 }
+
